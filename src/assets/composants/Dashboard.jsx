@@ -1,11 +1,12 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-// import {faBars} from 'awesome'
 import women from '../../assets/images/women.png'
 import drapeau from '../../assets/images/drapeau.png'
+import Apple from '../../assets/images/Apple-watch.jpg';
+
 
 function Dashboard() {
-  // Données pour les cartes
+  // Données wu cartes yi
   const stats = [
     { 
       title: "Total User",
@@ -41,7 +42,7 @@ function Dashboard() {
     }
   ];
 
-  // Données du graphique
+  // Données wu graphique yi
   const salesData = [
     { name: '5k', value: 20 },
     { name: '10k', value: 40 },
@@ -59,14 +60,11 @@ function Dashboard() {
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar exactement comme le prototype */}
       <aside className="w-64 bg-white">
-        {/* Logo */}
         <div className="p-6">
           <span className="text-xl font-bold text-blue-600">DashStack</span>
         </div>
 
-        {/* Menu principal */}
         <nav className="px-4">
           <a href="#" className="flex items-center px-4 py-2 mb-1  rounded-lg">
             <span className="mr-3">📊</span>
@@ -93,7 +91,6 @@ function Dashboard() {
             Product Stock
           </a>
 
-          {/* Section Pages */}
           <div className="mt-8">
             <span className="px-4 text-xs font-semibold text-gray-500 uppercase">Pages</span>
             <div className="mt-4">
@@ -133,9 +130,7 @@ function Dashboard() {
         </nav>
       </aside>
 
-      {/* Contenu principal */}
       <main className="flex-1">
-        {/* Navbar exactement comme le prototype */}
         <header className="bg-white border-b">
           <div className="flex items-center justify-between px-6 py-4">
             <h1 className="text-2xl font-semibold text-gray-800">☰</h1>
@@ -156,10 +151,14 @@ function Dashboard() {
                 <span className="text-sm text-gray-600">English</span>
               </div>
               
-              <div className="relative">
-                <span className="text-xl">🔔</span>
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </div>
+               <div className="relative inline-block text-blue-500 text-2xl">
+                      <span role="img" aria-label="notification">🔔
+                    </span>
+                     <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                      6
+                </span>
+            </div>
+
 
               <div className="flex items-center space-x-2">
                 <img src={women} className="rounded-full h-10 w-10" alt="User avatar"/>
@@ -172,9 +171,7 @@ function Dashboard() {
           </div>
         </header>
 
-        {/* Contenu */}
         <div className="p-6 space-y-6">
-          {/* Cartes de statistiques exactement comme le prototype */}
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <div className="grid grid-cols-4 gap-6">
             
@@ -199,7 +196,6 @@ function Dashboard() {
             ))}
           </div>
 
-          {/* Graphique exactement comme le prototype */}
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg font-semibold">Sales Details</h2>
@@ -223,7 +219,6 @@ function Dashboard() {
             </LineChart>
           </div>
 
-          {/* Tableau exactement comme le prototype */}
           <div className="bg-white rounded-lg shadow-sm">
             <div className="flex justify-between items-center p-6">
               <h2 className="text-lg font-semibold">Deals Details</h2>
@@ -246,7 +241,7 @@ function Dashboard() {
                 <tr className="border-t">
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      <img src="/api/placeholder/40/40" className="rounded-lg mr-3" alt="Apple Watch"/>
+                      <img src={Apple} className="rounded-lg mr-3 h-8 w-7" alt="Apple Watch"/>
                       <span>Apple Watch</span>
                     </div>
                   </td>
@@ -255,7 +250,7 @@ function Dashboard() {
                   <td className="px-6 py-4 text-gray-500">423</td>
                   <td className="px-6 py-4 text-gray-500">$34,295</td>
                   <td className="px-6 py-4">
-                    <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                    <span className="px-3 py-1 bg-[#00B69B] text-white rounded-full text-sm">
                       Delivered
                     </span>
                   </td>
