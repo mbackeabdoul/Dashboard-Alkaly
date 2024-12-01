@@ -156,7 +156,7 @@ function Dashboard() {
       </aside>
 
       <button
-        className="fixed left-2 z-50 md:hidden p-2"
+        className="fixed left-2 z-60 md:hidden p-2"
         onClick={toggleSidebar}
       >
         <span className="text-3xl">☰</span>
