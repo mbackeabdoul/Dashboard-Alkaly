@@ -2,6 +2,10 @@
 // import NotesApp from "./assets/composants/NoteApp"
 import Dashboard from "./assets/composants/Dashboard"
 // import GestionUtilisateur from "./assets/composants/LocaleStorage";
+// import TravelBlog from "./assets/composants/BlogVoyage";
+// import JeemaCoder from "./assets/composants/JeemaCode";
+// import FormComponent from "./assets/composants/Forme"
+
 
 
 function App() {
@@ -16,7 +20,10 @@ function App() {
     {/* <NotesApp /> */}
     < Dashboard />
     {/* < Card />4 */}
-    {/* < GestionUtilisateur /> */}
+     {/* < GestionUtilisateur /> */}
+      {/* <TravelBlog /> */}
+    {/* <JeemaCoder /> */}
+    {/* < FormComponent /> */}
   </div>
   
   )

@@ -1,6 +1,26 @@
+// src/assets/components/LocaleStorage.jsx
 import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore";
 
-const GestionUtilisateur = () => {
+// Configuration de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyC3qJQ0yvFs2eyUVcsraAgjX3Y0YJPGONM",
+  authDomain: "samatodolist-react.firebaseapp.com",
+  projectId: "samatodolist-react",
+  storageBucket: "samatodolist-react.firebasestorage.app",
+  messagingSenderId: "627228121820",
+  appId: "1:627228121820:web:bdcaf8dfc44241a3603219",
+  measurementId: "G-XJ02ZJQ8XY"
+};
+
+// Initialiser Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialiser Firestore
+const db = getFirestore(app);
+
+const LocaleStorage = () => {
   const [utilisateurs, setUtilisateurs] = useState([]);
   const [formulaire, setFormulaire] = useState({
     id: null,
@@ -10,59 +30,69 @@ const GestionUtilisateur = () => {
     telephone: "",
   });
 
-  // Charger les utilisateurs depuis le localStorage lors du démarrage
+  // Récupérer les utilisateurs depuis Firestore
   useEffect(() => {
-    const utilisateursStorage = JSON.parse(localStorage.getItem("utilisateurs"));
-    if (utilisateursStorage) {
-      setUtilisateurs(utilisateursStorage);
-    }
+    const getUsers = async () => {
+      const querySnapshot = await getDocs(collection(db, "utilisateurs"));
+      const usersList = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setUtilisateurs(usersList);
+    };
+    getUsers();
   }, []);
 
-  // Mettre à jour le localStorage chaque fois que l'état des utilisateurs change
-  useEffect(() => {
-    if (utilisateurs.length > 0) {
-      localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
+  // Ajouter ou mettre à jour un utilisateur
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formulaire.id === null) {
+      await addDoc(collection(db, "utilisateurs"), formulaire);
+    } else {
+      const userDoc = doc(db, "utilisateurs", formulaire.id);
+      await updateDoc(userDoc, formulaire);
     }
-  }, [utilisateurs]);
+
+    // Réinitialiser le formulaire et recharger la liste des utilisateurs
+    setFormulaire({ id: null, prenom: "", nom: "", email: "", telephone: "" });
+    const querySnapshot = await getDocs(collection(db, "utilisateurs"));
+    const usersList = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setUtilisateurs(usersList);
+  };
+
+  // Modifier un utilisateur
+  const handleEdit = (id) => {
+    const utilisateur = utilisateurs.find((user) => user.id === id);
+    setFormulaire(utilisateur);
+  };
+
+  // Supprimer un utilisateur
+  const handleDelete = async (id) => {
+    const userDoc = doc(db, "utilisateurs", id);
+    await deleteDoc(userDoc);
+
+    // Mettre à jour la liste après suppression
+    const querySnapshot = await getDocs(collection(db, "utilisateurs"));
+    const usersList = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setUtilisateurs(usersList);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulaire({ ...formulaire, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (formulaire.id === null) {
-      setUtilisateurs([
-        ...utilisateurs,
-        { ...formulaire, id: Date.now() },
-      ]);
-    } else {
-      setUtilisateurs(
-        utilisateurs.map((user) =>
-          user.id === formulaire.id ? formulaire : user
-        )
-      );
-    }
-
-    setFormulaire({ id: null, prenom: "", nom: "", email: "", telephone: "" });
-  };
-
-  const handleEdit = (id) => {
-    const utilisateur = utilisateurs.find((user) => user.id === id);
-    setFormulaire(utilisateur);
-  };
-
-  const handleDelete = (id) => {
-    setUtilisateurs(utilisateurs.filter((user) => user.id !== id));
-  };
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-6">Gestion des Utilisateurs</h1>
 
-      {/* Formulaire */}
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl"
@@ -133,7 +163,6 @@ const GestionUtilisateur = () => {
         </div>
       </form>
 
-      {/* Liste des utilisateurs */}
       <div className="flex justify-center w-full mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
           {utilisateurs.map((user) => (
@@ -169,4 +198,4 @@ const GestionUtilisateur = () => {
   );
 };
 
-export default GestionUtilisateur;
+export default LocaleStorage;
