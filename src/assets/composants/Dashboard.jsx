@@ -9,7 +9,7 @@ function Dashboard() {
 
   // Données wu cartes yi
   const stats = [
-    { 
+    {
       title: "Total User",
       value: "40,689",
       change: "8.5%",
@@ -17,7 +17,7 @@ function Dashboard() {
       bgIconColor: "bg-blue-50",
       icon: "👤"
     },
-    { 
+    {
       title: "Total Order",
       value: "10293",
       change: "1.3%",
@@ -25,7 +25,7 @@ function Dashboard() {
       bgIconColor: "bg-yellow-50",
       icon: "📦"
     },
-    { 
+    {
       title: "Total Sales",
       value: "$89,000",
       change: "4.3%",
@@ -33,7 +33,7 @@ function Dashboard() {
       bgIconColor: "bg-green-50",
       icon: "📈"
     },
-    { 
+    {
       title: "Total Pending",
       value: "2040",
       change: "1.8%",
@@ -64,15 +64,16 @@ function Dashboard() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <aside 
+    <div className="flex min-h-screen bg-gray-50 overflow-x-hidden">
+      <aside
         className={`
-          fixed md:static top-0 left-0 z-40 w-64 bg-white h-screen md:h-auto
-          transform transition-transform duration-300 ease-in-out
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-          md:translate-x-0
-        `}
+        fixed md:static top-0 left-0 z-40 w-64 bg-white h-screen md:h-auto overflow-y-auto
+        transform transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        md:translate-x-0
+      `}
       >
+
         <div className="p-6">
           <span className="text-xl font-bold text-blue-600">DashStack</span>
         </div>
@@ -154,23 +155,23 @@ function Dashboard() {
         </nav>
       </aside>
 
-      <button 
-        className="fixed top-4 left-4 z-50 md:hidden"
+      <button
+        className="fixed left-2 z-50 md:hidden p-2"
         onClick={toggleSidebar}
       >
-        <span className="text-2xl">☰</span>
+        <span className="text-3xl">☰</span>
       </button>
 
+
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
-
-      <main className="flex-1 md:ml-0">
-        <header className="bg-white border-b">
-          <div className="flex items-center justify-between px-4 md:px-6 py-4">
+      <main className="flex-1 md:ml-0 w-full">
+        <header className="bg-white border-b w-full">
+          <div className="flex items-center justify-between px-2 md:px-6 py-2 md:py-4">
             <div className="hidden md:block flex-1 max-w-xl mx-8">
               <div className="relative">
                 <input
@@ -182,12 +183,12 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 md:space-x-6 ml-auto">
+            <div className="flex items-center gap-3 space-x-2 ml-1 md:space-x-6 ml-auto">
               <div className="flex items-center space-x-1 md:space-x-2">
-                <img src={drapeau} className="rounded-lg h-6 w-8 md:h-8 md:w-10" alt="English flag"/>
+                <img src={drapeau} className="rounded-lg h-6 w-6 md:h-8 md:w-10" alt="English flag" />
                 <span className="text-xs md:text-sm text-gray-600">English</span>
               </div>
-              
+
               <div className="relative inline-block text-blue-500 text-xl md:text-2xl">
                 <span role="img" aria-label="notification">🔔</span>
                 <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 md:h-5 md:w-5 flex items-center justify-center">
@@ -196,7 +197,7 @@ function Dashboard() {
               </div>
 
               <div className="flex items-center space-x-1 md:space-x-2">
-                <img src={women} className="rounded-full h-8 w-8 md:h-10 md:w-10" alt="User avatar"/>
+                <img src={women} className="rounded-full h-8 w-8 md:h-10 md:w-10" alt="User avatar" />
                 <div className="text-xs md:text-sm">
                   <p className="font-medium">Moni Roy</p>
                   <p className="text-gray-500">Admin</p>
@@ -206,48 +207,48 @@ function Dashboard() {
           </div>
         </header>
 
-        <div className="p-4 md:p-6 space-y-6">
-          <h1 className="text-xl md:text-2xl font-bold">Dashboard</h1>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-  {stats.map((stat, index) => (
-    <div key={index} className="col-span-1 md:col-span-3 bg-white p-4 md:p-6 rounded-lg shadow-sm">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h3 className="text-gray-500 text-sm mb-2">{stat.title}</h3>
-          <p className="text-xl md:text-2xl font-bold">{stat.value}</p>
-        </div>
-        <div className={`${stat.bgIconColor} p-3 rounded-full`}>
-          <span className="text-xl">{stat.icon}</span>
-        </div>
-      </div>
-      <div className="flex items-center">
-        <span className={`text-sm ${stat.trend.includes('Down') ? 'text-red-500' : 'text-green-500'}`}>
-          {stat.trend.includes('Down') ? '↓' : '↑'} {stat.change}
-        </span>
-        <span className="text-gray-500 text-sm ml-1">{stat.trend}</span>
-      </div>
-    </div>
-  ))}
-</div>
+        <div className="p-2 md:p-6 space-y-4 md:space-y-6 w-full">
+          <h1 className="text-xl md:text-2xl font-bold pl-2">Dashboard</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 md:gap-6 px-2">
+            {stats.map((stat, index) => (
+              <div key={index} className="col-span-1 md:col-span-3 bg-white p-3 md:p-6 rounded-lg shadow-sm">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-gray-500 text-sm mb-2">{stat.title}</h3>
+                    <p className="text-xl md:text-2xl font-bold">{stat.value}</p>
+                  </div>
+                  <div className={`${stat.bgIconColor} p-3 rounded-full`}>
+                    <span className="text-xl">{stat.icon}</span>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <span className={`text-sm ${stat.trend.includes('Down') ? 'text-red-500' : 'text-green-500'}`}>
+                    {stat.trend.includes('Down') ? '↓' : '↑'} {stat.change}
+                  </span>
+                  <span className="text-gray-500 text-sm ml-1">{stat.trend}</span>
+                </div>
+              </div>
+            ))}
+          </div>
 
-          <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm">
-            <div className="flex justify-between items-center mb-6">
+          <div className="bg-white p-3 md:p-6 rounded-lg shadow-sm mx-2">
+            <div className="flex justify-between items-center mb-4 md:mb-6">
               <h2 className="text-lg font-semibold">Sales Details</h2>
               <select className="border rounded-lg px-2 md:px-3 py-1 md:py-2 text-sm">
                 <option>October</option>
               </select>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[250px] md:h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={salesData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Line 
-                    type="monotone" 
-                    dataKey="value" 
-                    stroke="#4F46E5" 
+                  <Line
+                    type="monotone"
+                    dataKey="value"
+                    stroke="#4F46E5"
                     strokeWidth={2}
                     dot={{ stroke: '#4F46E5', strokeWidth: 2, r: 4 }}
                     activeDot={{ r: 6 }}
@@ -256,11 +257,10 @@ function Dashboard() {
               </ResponsiveContainer>
             </div>
           </div>
-
-          <div className="bg-white rounded-lg shadow-sm">
-            <div className="flex justify-between items-center p-4 md:p-6">
-              <h2 className="text-lg font-semibold">Deals Details</h2>
-              <select className="border rounded-lg px-2 md:px-3 py-1 md:py-2 text-sm">
+          <div className="bg-white rounded-lg shadow-sm mx-2">
+            <div className="flex flex-wrap md:flex-nowrap justify-between items-center p-3 md:p-6">
+              <h2 className="text-base md:text-lg font-semibold">Deals Details</h2>
+              <select className="border rounded-lg px-2 md:px-3 py-1 md:py-2 text-xs md:text-sm">
                 <option>October</option>
               </select>
             </div>
@@ -268,29 +268,52 @@ function Dashboard() {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Product Name</th>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Location</th>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Date - Time</th>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Piece</th>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Amount</th>
-                    <th className="text-left px-4 md:px-6 py-3 text-xs md:text-sm font-medium text-gray-500">Status</th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Product Name
+                    </th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Location
+                    </th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Date - Time
+                    </th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Piece
+                    </th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Amount
+                    </th>
+                    <th className="text-left px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
+                      Status
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-t">
-                    <td className="px-4 md:px-6 py-4">
+                    <td className="px-3 md:px-6 py-3 md:py-4">
                       <div className="flex items-center">
-                        <img src={Apple} className="rounded-lg mr-3 h-6 w-6 md:h-8 md:w-7" alt="Apple Watch"/>
-                        <span className="text-sm md:text-base">Apple Watch</span>
+                        <img
+                          src={Apple}
+                          className="rounded-lg mr-2 md:mr-3 h-5 w-5 md:h-8 md:w-8"
+                          alt="Apple Watch"
+                        />
+                        <span className="text-xs md:text-sm">Apple Watch</span>
                       </div>
                     </td>
-                    <td className="px-4 md:px-6 py-4 text-gray-500 text-sm md:text-base">6096 Marjolaine Landing</td>
-                    <td className="px-4 md:px-6 py-4 text-gray-500 text-sm md:text-base">12.09.2019 - 12:53 PM</td>
-                    <td className="px-4 md:px-6 py-4 text-gray-500 text-sm md:text-base">423</td>
-                    <td className="px-4 md:px-6 py-4 text-gray-500 text-sm md:text-base">$34,295</td>
-                    <td className="px-4 md:px-6 py-4">
-                      {/* <span className="px-2 md:px-3 */}
-                      <span className="px-2 md:px-3 py-1 bg-[#00B69B] text-white rounded-full text-xs md:text-sm">
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-gray-500 text-xs md:text-sm">
+                      6096 Marjolaine Landing
+                    </td>
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-gray-500 text-xs md:text-sm">
+                      12.09.2019 - 12:53 PM
+                    </td>
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-gray-500 text-xs md:text-sm">
+                      423
+                    </td>
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-gray-500 text-xs md:text-sm">
+                      $34,295
+                    </td>
+                    <td className="px-3 md:px-6 py-3 md:py-4">
+                      <span className="px-2 md:px-3 py-1 bg-[#00B69B] text-white rounded-full text-[10px] md:text-xs">
                         Delivered
                       </span>
                     </td>
@@ -299,6 +322,7 @@ function Dashboard() {
               </table>
             </div>
           </div>
+
         </div>
       </main>
     </div>
