@@ -1,31 +1,35 @@
-import React from 'react';
+import React from "react";
 
 const FooterNewsletter = () => {
   return (
     <footer className="w-full">
       {/* Newsletter Section */}
-      <div className="w-full bg-gray-100 py-12 px-4">
-        <div className="max-w-[1140px] mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3 text-gray">Wanterma ?</h2>
+      <div className="w-full bg-white py-12 px-4">
+        <div className="max-w-screen-xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-3 text-gray-800">Wanterma ?</h2>
           <p className="text-gray-600 mb-6">
             Abonnez-vous à notre newsletter pour recevoir des mises à jour sur nos dernières offres!
           </p>
-          <div className="flex max-w-lg mx-auto gap-2">
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="flex-1 p-2 border border-gray-300 rounded"
-            />
-            <button className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-[#F97316]">
-              S'abonner
-            </button>
-          </div>
+          <div className="w-[260px] md:w-[500px] mx-auto flex flex-row gap-1">
+      <input
+        type="email"
+        placeholder="Email Address"
+        className="flex-1 p-1 md:p-2 border border-gray-300 rounded text-xs md:text-sm h-8 md:h-10"
+      />
+      <button 
+        className="w-20 md:w-28 bg-gray-800 text-white px-2 md:px-4 h-8 md:h-10 rounded text-xs md:text-sm 
+        hover:bg-[#F97316] active:bg-[#F97316] touch-manipulation"
+      >
+        S'abonner
+      </button>
+    </div>
+
         </div>
       </div>
 
       {/* Main Footer */}
       <div className="w-full bg-[#1a1a1a] text-gray-400 py-12 px-4">
-        <div className="max-w-[1140px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="max-w-[1140px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* A propos */}
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">A propos</h3>
@@ -72,8 +76,11 @@ const FooterNewsletter = () => {
         </div>
 
         {/* Copyright */}
-        <div className="max-w-[1140px] mx-auto mt-12 pt-8 border-t border-gray-800 text-center">
-          <p>Cette plateforme est réalisée par <span className="text-white">PROMISING TEAM</span></p>
+        <div className="max-w-[1140px] mx-auto mt-12 pt-8 border-t border-gray-800 text-center bg-[#1e1e1e]">
+          <p className="text-white">
+            Cette plateforme est réalisée par{" "}
+            <span className="text-white font-bold">PROMISING TEAM</span>
+          </p>
         </div>
       </div>
     </footer>

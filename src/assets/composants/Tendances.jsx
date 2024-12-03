@@ -20,7 +20,7 @@ const DernieresTendances = () => {
 
   return (
     <div className="flex justify-center items-center p-4">
-      <div className="flex max-w-screen-xl shadow-lg flex-col sm:flex-row">
+      <div className="flex w-[1140px]  shadow-lg flex-col sm:flex-row">
         {/* Section gauche - Image sur fond blanc */}
         <div className="w-full sm:w-1/2 bg-white p-6 flex items-center justify-center">
           <img
