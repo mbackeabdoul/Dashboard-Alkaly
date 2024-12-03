@@ -8,40 +8,40 @@ function Dashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Données wu cartes yi
-  const stats = [
-    {
-      title: "Total User",
-      value: "40,689",
-      change: "8.5%",
-      trend: "Up from yesterday",
-      bgIconColor: "bg-blue-50",
-      icon: "👤"
-    },
-    {
-      title: "Total Order",
-      value: "10293",
-      change: "1.3%",
-      trend: "Up from past week",
-      bgIconColor: "bg-yellow-50",
-      icon: "📦"
-    },
-    {
-      title: "Total Sales",
-      value: "$89,000",
-      change: "4.3%",
-      trend: "Down from yesterday",
-      bgIconColor: "bg-green-50",
-      icon: "📈"
-    },
-    {
-      title: "Total Pending",
-      value: "2040",
-      change: "1.8%",
-      trend: "Up from yesterday",
-      bgIconColor: "bg-red-50",
-      icon: "⏳"
-    }
-  ];
+  // const stats = [
+  //   {
+  //     title: "Total User",
+  //     value: "40,689",
+  //     change: "8.5%",
+  //     trend: "Up from yesterday",
+  //     bgIconColor: "bg-blue-50",
+  //     icon: "👤"
+  //   },
+  //   {
+  //     title: "Total Order",
+  //     value: "10293",
+  //     change: "1.3%",
+  //     trend: "Up from past week",
+  //     bgIconColor: "bg-yellow-50",
+  //     icon: "📦"
+  //   },
+  //   {
+  //     title: "Total Sales",
+  //     value: "$89,000",
+  //     change: "4.3%",
+  //     trend: "Down from yesterday",
+  //     bgIconColor: "bg-green-50",
+  //     icon: "📈"
+  //   },
+  //   {
+  //     title: "Total Pending",
+  //     value: "2040",
+  //     change: "1.8%",
+  //     trend: "Up from yesterday",
+  //     bgIconColor: "bg-red-50",
+  //     icon: "⏳"
+  //   }
+  // ];
 
   // Données wu graphique yi
   const salesData = [
@@ -156,7 +156,7 @@ function Dashboard() {
       </aside>
 
       <button
-        className="fixed left-2 z-60 md:hidden p-2"
+        className="fixed left-2 z-50 md:hidden p-2"
         onClick={toggleSidebar}
       >
         <span className="text-3xl">☰</span>
@@ -210,26 +210,79 @@ function Dashboard() {
         <div className="p-2 md:p-6 space-y-4 md:space-y-6 w-full">
           <h1 className="text-xl md:text-2xl font-bold pl-2">Dashboard</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 md:gap-6 px-2">
-            {stats.map((stat, index) => (
-              <div key={index} className="col-span-1 md:col-span-3 bg-white p-3 md:p-6 rounded-lg shadow-sm">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-gray-500 text-sm mb-2">{stat.title}</h3>
-                    <p className="text-xl md:text-2xl font-bold">{stat.value}</p>
-                  </div>
-                  <div className={`${stat.bgIconColor} p-3 rounded-full`}>
-                    <span className="text-xl">{stat.icon}</span>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className={`text-sm ${stat.trend.includes('Down') ? 'text-red-500' : 'text-green-500'}`}>
-                    {stat.trend.includes('Down') ? '↓' : '↑'} {stat.change}
-                  </span>
-                  <span className="text-gray-500 text-sm ml-1">{stat.trend}</span>
-                </div>
-              </div>
-            ))}
+      <div className="col-span-1 md:col-span-3 bg-white rounded-lg shadow-sm">
+        <div className="p-3 md:p-6">
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Total User</h3>
+              <p className="text-xl md:text-2xl font-bold">40,689</p>
+            </div>
+            <div className="bg-blue-50 p-3 rounded-full">
+              <span className="text-xl">👤</span>
+            </div>
           </div>
+          <div className="flex items-center">
+            <span className="text-green-500 text-sm">↑ 8.5%</span>
+            <span className="text-gray-500 text-sm ml-1">Up from yesterday</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-3 bg-white rounded-lg shadow-sm">
+        <div className="p-3 md:p-6">
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Total Order</h3>
+              <p className="text-xl md:text-2xl font-bold">10293</p>
+            </div>
+            <div className="bg-yellow-50 p-3 rounded-full">
+              <span className="text-xl">📦</span>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <span className="text-green-500 text-sm">↑ 1.3%</span>
+            <span className="text-gray-500 text-sm ml-1">Up from past week</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-3 bg-white rounded-lg shadow-sm">
+        <div className="p-3 md:p-6">
+          <div className="flex justify-between items-start mb-4 ">
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Total Sales</h3>
+              <p className="text-xl md:text-2xl font-bold">$89,000</p>
+            </div>
+            <div className="bg-green-50 p-3 rounded-full">
+              <span className="text-xl">📈</span>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <span className="text-red-500 text-sm">↓ 4.3%</span>
+            <span className="text-gray-500 text-sm ml-1">Down from yesterday</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-span-1 md:col-span-3">
+        <div className="p-3 md:p-6">
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Total Pending</h3>
+              <p className="text-xl md:text-2xl font-bold">2040</p>
+            </div>
+            <div className="bg-red-50 p-3 rounded-full">
+              <span className="text-xl">⏳</span>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <span className="text-green-500 text-sm">↑ 1.8%</span>
+            <span className="text-gray-500 text-sm ml-1">Up from yesterday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
           <div className="bg-white p-3 md:p-6 rounded-lg shadow-sm mx-2">
             <div className="flex justify-between items-center mb-4 md:mb-6">

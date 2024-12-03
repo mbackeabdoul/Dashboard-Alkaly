@@ -1,31 +1,48 @@
-// import MarketingSignup from "./assets/composants/MarketingSignup"
-// import NotesApp from "./assets/composants/NoteApp"
-import Dashboard from "./assets/composants/Dashboard"
-// import GestionUtilisateur from "./assets/composants/LocaleStorage";
-// import TravelBlog from "./assets/composants/BlogVoyage";
-// import JeemaCoder from "./assets/composants/JeemaCode";
-// import FormComponent from "./assets/composants/Forme"
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './assets/composants/NavBar'
+import Header from './assets/composants/Header'
+import Advantages from './assets/composants/Advantages'
+import Collections from './assets/composants/Collections'
+import Soldes from './assets/composants/Soldes'
+import DernieresTendances from './assets/composants/Tendances'
+import FooterNewsletter from './assets/composants/FooterNewsletter'
 
 
+
+// Pages
+const Home = () => (
+  <>
+    <Header />
+    <Advantages />
+    <Collections />
+    <Soldes />
+    <DernieresTendances />
+    <FooterNewsletter />
+    {/* <div>Contenu de la page d'accueil</div> */}
+  </>
+)
+const Tous = () => <div>Tous les produits</div>
+const Hommes = () => <div>Collection Hommes</div>
+const Femmes = () => <div>Collection Femmes</div>
+const Enfants = () => <div>Collection Enfants</div>
+const Vente = () => <div>Vente</div>
+const Chariot = () => <div>Panier</div>
 
 function App() {
   return (
-  <div>
-  {/* < MarketingSignup /> */}
-  {/* <div className="flex justify-center items-center h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-blue-600">
-        Hello Tailwind!
-      </h1>
-    </div> */}
-    {/* <NotesApp /> */}
-    < Dashboard />
-    {/* < Card />4 */}
-     {/* < GestionUtilisateur /> */}
-      {/* <TravelBlog /> */}
-    {/* <JeemaCoder /> */}
-    {/* < FormComponent /> */}
-  </div>
-  
+    <div className="min-h-screen bg-[#F3F4F6]">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tous" element={<Tous />} />
+        <Route path="/hommes" element={<Hommes />} />
+        <Route path="/femmes" element={<Femmes />} />
+        <Route path="/enfants" element={<Enfants />} />
+        <Route path="/vente" element={<Vente />} />
+        <Route path="/chariot" element={<Chariot />} />
+      </Routes>
+    </div>
   )
 }
 
