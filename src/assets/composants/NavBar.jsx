@@ -9,8 +9,8 @@ const Navbar = () => {
     <nav className="w-full bg-white border-b">
       <div className="w-full max-w-screen-xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-[#FF0066]">
-            Wanterma
+          <Link to="/" className="text-2xl font-bold text-[#e40046]">
+            Wanteerma
           </Link>
 
           <div className="md:hidden">
